@@ -1,7 +1,10 @@
 __table__
 _User_
 * nickname :text
-* avatar
+* avatar :(paperclipに従う)
+* works :text
+* profile(self_introduction) :text
+
 
 _Comment_
 * text :text
@@ -13,7 +16,10 @@ _Project_
 * catch_copy :text
 * concept :text
 * user_id :integer
-* like_id :integer
+
+_Image_
+* name :text
+* project_id :integer
 
 _Like_
 * user_id :integer
@@ -24,6 +30,8 @@ __association__
 * User has_many Comments
 * User has_many Likes
 * Project has_many Likes
+* Project has_many Images
+* Image belongs_to Project
 * Comment belongs_to User
 * Comment belongs_to Project
 * Like belongs_to User
