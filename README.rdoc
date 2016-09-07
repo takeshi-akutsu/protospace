@@ -1,28 +1,30 @@
-== README
+__table__
+_User_
+* nickname :text
+* avatar
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+_Comment_
+* text :text
+* user_id :integer
+* project_id :integer
 
-Things you may want to cover:
+_Project_
+* title :text
+* catch_copy :text
+* concept :text
+* user_id :integer
+* like_id :integer
 
-* Ruby version
+_Like_
+* user_id :integer
+* project_id :integer
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+__association__
+* User has_many Projects
+* User has_many Comments
+* User has_many Likes
+* Project has_many Likes
+* Comment belongs_to User
+* Comment belongs_to Project
+* Like belongs_to User
+* Like belongs_to Project
