@@ -1,8 +1,11 @@
 _User_
-* nickname :text
+* nickname :string
 * avatar :(paperclipに従う)
 * works :text
 * profile(self_introduction) :text
+* member :string
+* password:(deviseに従う)
+* email:(deviseに従う)
 
 
 _Comment_
@@ -18,6 +21,7 @@ _Project_
 
 _Image_
 * name :text
+* status :integer
 * project_id :integer
 
 _Like_
@@ -30,6 +34,7 @@ _association_
 * User has_many Likes
 * Project has_many Likes
 * Project has_many Images
+* Project belongs_to User
 * Image belongs_to Project
 * Comment belongs_to User
 * Comment belongs_to Project
