@@ -36,3 +36,4 @@ __association__
 * Comment belongs_to Project
 * Like belongs_to User
 * Like belongs_to Project
+
