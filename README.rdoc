@@ -1,4 +1,3 @@
-__table__
 _User_
 * nickname :text
 * avatar :(paperclipに従う)
@@ -25,7 +24,7 @@ _Like_
 * user_id :integer
 * project_id :integer
 
-__association__
+_association_
 * User has_many Projects
 * User has_many Comments
 * User has_many Likes
