@@ -20,7 +20,7 @@ _Project_
 * user_id :integer
 
 _Image_
-* name :text
+* image :string
 * status :integer
 * project_id :integer
 
