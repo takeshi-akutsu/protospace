@@ -1,0 +1,15 @@
+.container
+  .form-signin
+    = form_for(resource, as: resource_name, class: "", url: user_session_path(resource_name), html: { method: :post}) do |f|
+      %h2.form-signin-heading Please sign in
+      = f.email_field :email , class: "form-control", id: "inputEmail", autofocus: "", placeholder: "Email address", required: ""
+      = f.password_field :password, class: "form-control", id: "inputPassword", placeholder: "Password", required: ""
+      .checkbox
+        %label
+          = f.check_box :remember_me
+          Remember me
+      = f.submit "Sign in", class: "btn btn-lg btn-primary btn-block"
+    .text-center
+      %p
+        Not a member?
+        %a{href: "/users/sign_in"} Sign up now
