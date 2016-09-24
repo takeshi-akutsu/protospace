@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     else
       current_user.update(update_params)
     end
+    redirect_to root_path
   end
 
   private
