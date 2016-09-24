@@ -11,7 +11,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update(update_params)
+    if update_params[:password].blank?
+      without_password_params = update_params # この１行を挟まないとダメだった
+      without_password_params.delete(:password)
+      current_user.update(without_password_params)
+      # update_params.delete(:password) # ダメなやり方
+      # current_user.update(update_params) # ダメなやり方
+    else
+      current_user.update(update_params)
+    end
   end
 
   private
