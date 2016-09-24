@@ -15,10 +15,12 @@
       - else
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
-            = link_to "UserName", "", class: "dropdown-toggle", aria: {expanded: "false"}, data: {toggle: "dropdown"}, role: "button"
+            = link_to current_user.nickname, "", class: "dropdown-toggle", aria: {expanded: "false"}, data: {toggle: "dropdown"}, role: "button"
             %ul.dropdown-menu{role: "menu"}
               %li
-                = link_to "Profile Edit", root_path
+                = link_to "My Page", user_path(current_user)
+              %li
+                = link_to "Profile Edit", edit_user_path(current_user)
               %li
                 = link_to "Logout", destroy_user_session_path, method: :delete
           %li
