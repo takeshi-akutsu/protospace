@@ -1,10 +1,7 @@
 class UsersController < ApplicationController
 
-  def index
-  end
-
   def show
-    @user = current_user
+    @user = current_user #あとで直す
   end
 
   def edit
@@ -12,11 +9,9 @@ class UsersController < ApplicationController
 
   def update
     if update_params[:password].blank?
-      without_password_params = update_params # この１行を挟まないとダメだった
+      without_password_params = update_params
       without_password_params.delete(:password)
       current_user.update(without_password_params)
-      # update_params.delete(:password) # ダメなやり方
-      # current_user.update(update_params) # ダメなやり方
     else
       current_user.update(update_params)
     end
