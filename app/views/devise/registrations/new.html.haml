@@ -1,5 +1,6 @@
 .container.user-new
   = form_for(resource, as: resource_name,url: user_registration_path, html: { method: :post }) do |f|
+    = devise_error_messages!
     .col-md-8.col-md-offset-2
       %header.row.user-nav.row
         .col-md-12
@@ -8,7 +9,7 @@
             .user-name.col-md-10
               = f.text_field :nickname, placeholder: "Username"
             .user-image.col-md-2
-              %button.btn.btn-primary Add image
+              = button_tag "Add image", class: "btn btn-primary"
               = f.file_field :avatar
           = f.email_field :email, class: "user-email", placeholder: "E-Mail"
           = f.password_field :password, class: "user-password", placeholder: "Password"
