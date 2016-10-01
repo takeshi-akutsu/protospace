@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-    @user = current_user #あとで直す
+    @user = User.find(params[:id])
   end
 
   def edit

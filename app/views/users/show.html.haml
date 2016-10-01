@@ -8,7 +8,7 @@
         %h4#top-aligned-media.media-heading
           Top aligned media
           %span.label.label-default.project-number
-            29
+            = @user.prototypes.length
             %i Projects
         .proto-user
           %span.degree= @user.member
@@ -21,29 +21,16 @@
             %p= @user.works
 .container.proto-list
   .row
+  - @user.prototypes.each do |prototype|
     .col-sm-4.col-md-3.proto-content
       .thumbnail
-        = link_to "#" do
-          = image_tag("sample.png")
+        = link_to prototype_path(prototype) do
+          = image_tag prototype.main_image.image
           .caption
-            %h3 Salvation Army on iPad App Wireframe
+            %h3= prototype.title
             .proto-meta
               .proto-date
-                Apr 26
-            %ul.proto-tag-list.list-inline
-              %li
-                = link_to "iPad", "#", class: "btn btn-default"
-              %li
-                = link_to "wireframe", "#", class: "btn btn-default"
-    .col-sm-4.col-md-3.proto-content
-      .thumbnail
-        = link_to "#" do
-          = image_tag("sample.png")
-          .caption
-            %h3 Salvation Army on iPad App Wireframe
-            .proto-meta
-              .proto-date
-                Apr 26
+                = prototype.created_at
             %ul.proto-tag-list.list-inline
               %li
                 = link_to "iPad", "#", class: "btn btn-default"

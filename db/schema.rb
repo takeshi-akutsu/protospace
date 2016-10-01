@@ -14,11 +14,11 @@
 ActiveRecord::Schema.define(version: 20160926082135) do
 
   create_table "images", force: :cascade do |t|
-    t.string   "image",      limit: 255
-    t.integer  "status",     limit: 4
-    t.integer  "project_id", limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "image",        limit: 255
+    t.integer  "status",       limit: 4
+    t.integer  "prototype_id", limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "prototypes", force: :cascade do |t|
