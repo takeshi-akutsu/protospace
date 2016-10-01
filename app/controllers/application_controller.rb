@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # sign_upのときに、独自のキーを許可する
-      devise_parameter_sanitizer.permit(:sign_up, keys:[:nickname, :image, :member, :self_intro, :works])
+      devise_parameter_sanitizer.permit(:sign_up, keys:[:nickname, :avatar, :member, :self_intro, :works])
     # account_updateのときに、独自のキーを許可する
-      devise_parameter_sanitizer.permit(:account_update, keys:[:nickname, :image, :member, :self_intro, :works])
+      devise_parameter_sanitizer.permit(:account_update, keys:[:nickname, :avatar, :member, :self_intro, :works])
   end
 end
