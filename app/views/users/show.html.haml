@@ -25,7 +25,7 @@
     .col-sm-4.col-md-3.proto-content
       .thumbnail
         = link_to prototype_path(prototype) do
-          = image_tag prototype.main_image.image
+          = image_tag prototype.images.main.first.image
           .caption
             %h3= prototype.title
             .proto-meta

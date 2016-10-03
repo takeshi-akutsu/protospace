@@ -9,19 +9,19 @@
           .cover-image-upload
             = f.fields_for :images do |image_form|
               = image_form.file_field :image
-              = image_form.hidden_field :status, value: 1
+              = image_form.hidden_field :status, value: :main
         .col-md-12
           %ul.proto-sub-list.list-group
             %li.list-group-item.col-md-4
               .image-upload
                 = f.fields_for :images do |image_form|
                   = image_form.file_field :image
-                  = image_form.hidden_field :status, value: 2
+                  = image_form.hidden_field :status, value: :sub
             %li.list-group-item.col-md-4
               .image-upload
                 = f.fields_for :images do |image_form|
                   = image_form.file_field :image
-                  = image_form.hidden_field :status, value: 2
+                  = image_form.hidden_field :status, value: :sub
             %li.list-group-item.col-md-4
               .image-upload-plus
                 %span +

@@ -19,10 +19,10 @@
         %span.num 20
   .row
     .col-md-9
-      = image_tag @prototype.main_image.image, class: "img-responsive"
+      = image_tag @prototype.images.main.first.image, class: "img-responsive"
     .col-md-3
       %ul.proto-sub-list.list-group
-      - @prototype.sub_images.each do |image|
+      - @prototype.images.sub.each do |image|
         %li.list-group-item
           = image_tag image.image, class: "img-responsive"
   .row.proto-description
