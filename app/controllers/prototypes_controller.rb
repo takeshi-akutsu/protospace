@@ -16,11 +16,10 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    prototype = current_user.prototypes.create(prototype_params)
-    binding.pry
-    prototype_params[:images_attributes].each do |hash|
-      Image.create(image: hash[1][:image], prototype_id: prototype.id, status: hash[1][:status]) if hash[1][:image]
-    end
+    current_user.prototypes.create(prototype_params)
+    # prototype.images.each do |image|
+    #   Image.create(image: image.image, status: image.status, prototype_id: image.prototype_id)
+    # end
     redirect_to root_path
   end
 
