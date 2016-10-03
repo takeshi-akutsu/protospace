@@ -17,7 +17,7 @@
     - @prototypes.each do |prototype|
       .col-sm-4.col-md-3.proto-content
         .thumbnail
-          %a{href: "/prototypes/#{prototype.id}"}
+          = link_to prototype_path(prototype) do
             = image_tag prototype.main_image.image
             .caption
               %h3= prototype.title
