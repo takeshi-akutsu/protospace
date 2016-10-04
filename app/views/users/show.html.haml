@@ -30,7 +30,7 @@
             %h3= prototype.title
             .proto-meta
               .proto-date
-                = prototype.created_at.to_s(:custom_short)
+                = prototype.created_at.strftime("%b %e")
             %ul.proto-tag-list.list-inline
               %li
                 = link_to "iPad", "#", class: "btn btn-default"
