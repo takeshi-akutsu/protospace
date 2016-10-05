@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
 
+  before_action :get_user, only: [:show]
+
   def show
-    @user = current_user #あとで直す
+    @prototypes = @user.prototypes.page(params[:page]).per(8)
   end
 
   def edit
@@ -19,7 +21,12 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def get_user
+    @user = User.find(params[:id])
+  end
+
   def update_params
-    params.require(:user).permit(:nickname, :email, :password, :member, :self_intro, :works)
+    params.require(:user).permit(:nickname, :email, :password, :member, :self_intro, :works, :avatar)
   end
 end

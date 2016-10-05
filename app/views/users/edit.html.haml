@@ -7,7 +7,7 @@
           .user-name_image.row
             .user-name.col-md-10
               = f.text_field :nickname, placeholder: "Username", value: current_user.nickname
-            .user-image.col-md-2{style: 'background-image: url(http://泣ける動画.com/wp-content/uploads/2015/01/t0205-01.jpg);'}
+            .user-image.col-md-2{style: "background-image: url(#{current_user.avatar});"}
               = button_tag "Change image", class: "btn btn-primary"
               = f.file_field :avatar
           = f.email_field :email, class: "user-email", placeholder: "E-Mail", value: current_user.email

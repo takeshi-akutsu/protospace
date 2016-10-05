@@ -1,36 +1,43 @@
-%form.container.proto-new{action: ""}
-  .col-md-8.col-md-offset-2
-    %header.row.user-nav.row
-      .col-md-12
-        %input.proto-new-title{type: "text", placeholder: "Title"}/
-    .row
-      .col-md-12
-        .cover-image-upload
-          %input{type: "file"}/
-      .col-md-12
-        %ul.proto-sub-list.list-group
-          %li.list-group-item.col-md-4
-            .image-upload
-              %input{type: "file"}/
-          %li.list-group-item.col-md-4
-            .image-upload
-              %input{type: "file"}/
-          %li.list-group-item.col-md-4
-            .image-upload-plus
-              %span +
-    .row.proto-description
-      .col-md-12
-        %input{type: "text", placeholder: "Catch Copy"}/
-      .col-md-12
-        %textarea{name: "", cols: "30", rows: "4", placeholder: "Concept"}
-      .col-md-12
-        %h4 Tag List
-        .row
-          .col-md-3
-            %input{type: "text", placeholder: "Web Design"}/
-          .col-md-3
-            %input{type: "text", placeholder: "UI"}/
-          .col-md-3
-            %input{type: "text", placeholder: "Application"}/
-    .row.text-center.proto-btn
-      %button.btn.btn-lg.btn-primary.btn-block{type: "submit"} Publish
+.container.proto-new
+  = form_for(@prototype, url: prototypes_path(@prototype), html: { method: :post }) do |f|
+    .col-md-8.col-md-offset-2
+      %header.row.user-nav.row
+        .col-md-12
+          = f.text_field :title, class: "proto-new-title", placeholder: "Title"
+      .row
+        .col-md-12
+          .cover-image-upload
+            = f.fields_for :images do |image_form|
+              = image_form.file_field :image
+              = image_form.hidden_field :status, value: :main
+        .col-md-12
+          %ul.proto-sub-list.list-group
+            %li.list-group-item.col-md-4
+              .image-upload
+                = f.fields_for :images do |image_form|
+                  = image_form.file_field :image
+                  = image_form.hidden_field :status, value: :sub
+            %li.list-group-item.col-md-4
+              .image-upload
+                = f.fields_for :images do |image_form|
+                  = image_form.file_field :image
+                  = image_form.hidden_field :status, value: :sub
+            %li.list-group-item.col-md-4
+              .image-upload-plus
+                %span +
+      .row.proto-description
+        .col-md-12
+          = f.text_field :catch_copy, placeholder: "Catch Copy"
+        .col-md-12
+          = f.text_area :concept, placeholder: "Concept", cols: "30", rows: "4"
+        .col-md-12
+          %h4 Tag List
+          .row
+            .col-md-3
+              %input{type: "text", placeholder: "Web Design"}/
+            .col-md-3
+              %input{type: "text", placeholder: "UI"}/
+            .col-md-3
+              %input{type: "text", placeholder: "Application"}/
+      .row.text-center.proto-btn
+        = button_tag "Publish", class: "btn btn-lg btn-primary btn-block", type: "submit"
