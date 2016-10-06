@@ -1,7 +1,7 @@
 class PrototypesController < ApplicationController
 
   before_action :authenticate_user!, only: [:new] #まだ適当
-  before_action :set_prototype, only: [:show, :edit, :update]
+  before_action :set_prototype, only: [:show, :edit, :update, :destroy]
 
   def index
     @prototypes = Prototype.includes([:images, :user]).page(params[:page]).per(8)
@@ -24,10 +24,14 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    binding.pry
     prototype = Prototype.find(params[:id])
     prototype.update(prototype_params) if (user_signed_in?) && (current_user.id == @prototype.user.id)
     redirect_to action: :show
+  end
+
+  def destroy
+    @prototype.destroy
+    redirect_to root_path
   end
 
   private
