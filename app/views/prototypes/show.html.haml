@@ -6,8 +6,9 @@
           = link_to user_path(@prototype.user) do
             = image_tag(@prototype.user.avatar, class: "media-object", alt: "64x64", height: "64px", width: "64px", data: {src: "holder.js/64x64"}, data: {holder: {rendered: "true"}})
         .media-body
-          %h4#top-aligned-media.media-heading
+          %h4#top-aligned-media.custom-media-heading
             = @prototype.title
+            = link_to "編集", edit_prototype_path(@prototype), class: "edit-btn btn-primary" if @prototype.user.id == current_user.id
           .proto-user
             = link_to "by #{@prototype.user.nickname}", user_path(@prototype.user)
             %span.degree= @prototype.user.works
