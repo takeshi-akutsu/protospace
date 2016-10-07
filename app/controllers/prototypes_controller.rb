@@ -25,7 +25,13 @@ class PrototypesController < ApplicationController
 
   def update
     prototype = Prototype.find(params[:id])
-    prototype.update(prototype_params) if (user_signed_in?) && (current_user.id == @prototype.user.id)
+    success = prototype.update(prototype_params) if (user_signed_in?) && (current_user.id == @prototype.user.id)
+    if success
+      flash[:success] = "更新に成功しました"
+    else
+      flash[:error] = "更新に失敗しました"
+    end
+    binding.pry
     redirect_to action: :show
   end
 
