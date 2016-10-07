@@ -31,7 +31,6 @@ class PrototypesController < ApplicationController
     else
       flash[:error] = "更新に失敗しました"
     end
-    binding.pry
     redirect_to action: :show
   end
 
