@@ -12,22 +12,17 @@
               = image_form.hidden_field :status, value: :main
               = image_tag @prototype.images.main.first.image, id: "main_preview" if @prototype.images.main.first
         .col-md-12
-          %ul.proto-sub-list.list-group
-            %li.list-group-item.col-md-4.sub_image_form
-              .image-upload
-                = f.fields_for :images, @prototype.images.sub.first do |image_form|
-                  = image_form.file_field :image
-                  = image_form.hidden_field :status, value: :sub
-                  = image_tag @prototype.images.sub.first.image, class: "sub_image", id: "sub_0_preview", style: "display: inline;" if @prototype.images.sub.first
-            %li.list-group-item.col-md-4.sub_image_form
-              .image-upload
-                = f.fields_for :images, @prototype.images.sub.second do |image_form|
-                  = image_form.file_field :image
-                  = image_form.hidden_field :status, value: :sub
-                  = image_tag @prototype.images.sub.second.image, class: "sub_image", id: "sub_1_preview", style: "display: inline;" if @prototype.images.sub.second
-            %li.list-group-item.col-md-4.sub_image_form
-              .image-upload-plus
-                %span +
+          - @prototype.images.sub.each_with_index do |image, index|
+            %ul.proto-sub-list.list-group
+              %li.list-group-item.col-md-4.sub_image_form
+                .image-upload
+                  = f.fields_for :images, image do |image_form|
+                    = image_form.file_field :image
+                    = image_form.hidden_field :status, value: :sub
+                    = image_tag image.image, class: "sub_image", id: "sub_#{index}_preview", style: "display: inline;"
+              %li.list-group-item.col-md-4.sub_image_form
+                .image-upload-plus
+                  %span +
       .row.proto-description
         .col-md-12
           = f.text_field :catch_copy, placeholder: "Catch Copy"
