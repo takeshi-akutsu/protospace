@@ -1,6 +1,3 @@
-- if flash[:success]
-  .alert.alert-success
-    = flash[:success]
-- elsif flash[:error]
-  .alert.alert-error
-    = flash[:error]
+- flash.each do |type, message|
+  %div{ class: "alert alert-#{type}"}
+    = message
