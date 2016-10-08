@@ -1,7 +1,7 @@
 class PrototypesController < ApplicationController
-
   before_action :authenticate_user!, only: [:new] #まだ適当
   before_action :set_prototype, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_to_root, only: [:edit]
 
   def index
     @prototypes = Prototype.includes([:images, :user]).page(params[:page]).per(8)
@@ -25,17 +25,16 @@ class PrototypesController < ApplicationController
 
   def update
     prototype = Prototype.find(params[:id])
-    success = prototype.update(prototype_params) if (user_signed_in?) && (current_user.id == @prototype.user.id)
-    if success
+    if current_user == @prototype.user && prototype.update(prototype_params)
       flash[:success] = "更新に成功しました"
     else
-      flash[:error] = "更新に失敗しました"
+      flash[:danger] = "更新に失敗しました"
     end
     redirect_to action: :show
   end
 
   def destroy
-    @prototype.destroy
+    @prototype.destroy if current_user == @prototype.user
     redirect_to root_path
   end
 
@@ -47,5 +46,9 @@ class PrototypesController < ApplicationController
 
   def prototype_params
     params.require(:prototype).permit(:title, :catch_copy, :concept, images_attributes: [:id, :image, :status])
+  end
+
+  def redirect_to_root
+      redirect_to root_path unless current_user == @prototype.user
   end
 end
