@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'prototypes#index'
   resources :prototypes, except: [:edit, :update, :destroy]
   resources :users, only: [:show, :edit, :update]
+  resources :likes, only: [:create, :destroy]
 end
