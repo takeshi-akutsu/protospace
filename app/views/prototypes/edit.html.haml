@@ -1,0 +1,43 @@
+.container.proto-new
+  = form_for(@prototype, url: prototype_path(@prototype), html: { method: :patch }) do |f|
+    .col-md-8.col-md-offset-2
+      %header.row.user-nav.row
+        .col-md-12
+          = f.text_field :title, class: "proto-new-title", placeholder: "Title"
+      .row
+        .col-md-12
+          .cover-image-upload
+            = f.fields_for :images, @prototype.images.main.first do |image_form|
+              = image_form.file_field :image
+              = image_form.hidden_field :status, value: :main
+              = image_tag @prototype.images.main.first.image, id: "main_preview" if @prototype.images.main.first
+        .col-md-12
+          - @prototype.images.sub.each_with_index do |image, index|
+            %ul.proto-sub-list.list-group
+              %li.list-group-item.col-md-4.sub_image_form
+                .image-upload
+                  = f.fields_for :images, image do |image_form|
+                    = image_form.file_field :image
+                    = image_form.hidden_field :status, value: :sub
+                    = image_tag image.image, class: "sub_image", id: "sub_#{index}_preview", style: "display: inline;"
+              %li.list-group-item.col-md-4.sub_image_form
+                .image-upload-plus
+                  %span +
+      .row.proto-description
+        .col-md-12
+          = f.text_field :catch_copy, placeholder: "Catch Copy"
+        .col-md-12
+          = f.text_area :concept, placeholder: "Concept", cols: "30", rows: "4"
+        .col-md-12
+          %h4 Tag List
+          .row
+            .col-md-3
+              %input{type: "text", placeholder: "Web Design"}/
+            .col-md-3
+              %input{type: "text", placeholder: "UI"}/
+            .col-md-3
+              %input{type: "text", placeholder: "Application"}/
+      .row.text-center.proto-btn
+        = button_tag "Publish", class: "btn btn-lg btn-primary btn-block", type: "submit"
+
+  = button_to "削除", prototype_path(@prototype), method: :delete, data: { confirm: "本当に削除しますか？" }

@@ -341,6 +341,16 @@ body {
         font-weight: bold;
       }
     }
+
+    .edit-btn {
+      font-size: 15px;
+      padding: 2px 14px;
+    }
+
+    .custom-media-heading {
+      margin-top: 3;
+      margin-bottom: 5px;
+    }
   }
 
   .proto-description {
@@ -430,6 +440,15 @@ body {
       filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
       cursor: pointer;
     }
+
+    #main_preview {
+      display: block;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .list-group-item {
@@ -467,9 +486,17 @@ body {
       }
     }
   }
+
   .proto-btn {
     max-width: 300px;
     margin: auto;
+  }
+
+  .sub_image_form {
+    .sub_image {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 
