@@ -13,7 +13,8 @@ class PrototypesController < ApplicationController
   end
 
   def show
-    @like = Like.new
+    prototype = Prototype.find(params[:id])
+    @like = prototype.like_user(current_user)
   end
 
   def create

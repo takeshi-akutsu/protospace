@@ -1,20 +1,16 @@
 class LikesController < ApplicationController
 
   def create
-    like = Like.create(like_params)
-    @prototype = like.prototype
+    @like = Like.create(user_id: current_user.id, prototype_id: params[:prototype_id])
+    # @likes = Like.where(prototype_id: @like.prototype)
+    @prototype = @like.prototype
   end
 
   def destroy
-    like = Like.find_by(like_params)
+    like = Like.find(params[:id])
     like.destroy if user_signed_in? && like.user == current_user
-    @likes = Like.where(prototype_id: like_params[:prototype_id]) #@likesじゃなくて、createのときと同様に@prototypeを送った方がいいかも？統一する
-  end
-
-  private
-
-  def like_params
-    params.require(:like).permit(:prototype_id, :user_id)
+    # @likes = Like.where(prototype_id: params[:prototype_id])
+    @prototype = Prototype.find(params[:prototype_id])
   end
 
 

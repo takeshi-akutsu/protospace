@@ -12,17 +12,8 @@
             = link_to "by #{@prototype.user.nickname}", user_path(@prototype.user)
             %span.degree= @prototype.user.works
 
-    .col-md-6.text-right
-      - if @prototype.like_user(current_user)
-        = button_to like_path(like: {user_id: current_user.id, prototype_id: @prototype.id}), class: "btn btn-default", id: "like-btn", method: :delete, remote: true do
-          = image_tag("icon_heart_red.svg")
-          Like
-          %span.num= @prototype.likes_count #どこで定義したか忘れた。何このメソッド。
-      - else
-        = button_to likes_path(like: {user_id: current_user.id, prototype_id: @prototype.id}), class: "btn btn-default", id: "like-btn", remote: true do
-          = image_tag("icon_heart.svg")
-          Like
-          %span.num= @prototype.likes_count #どこで定義したか忘れた。何このメソッド。
+    .col-md-6.text-right#like-btn
+      = render partial: "likes/like", locals: { prototype: @prototype, like: @like }
   .row
     .col-md-9
       = image_tag @prototype.images.main.first.image, class: "img-responsive"
