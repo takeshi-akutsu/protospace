@@ -5,6 +5,6 @@ class Prototype < ActiveRecord::Base
   accepts_nested_attributes_for :images, reject_if: proc { |attributes| attributes['image'].blank? }
 
   def like_user(user)
-    likes.find_by(user_id: user) #likesには何が入ってくるのかあとで確認する
+    likes.find_by(user_id: user)
   end
 end

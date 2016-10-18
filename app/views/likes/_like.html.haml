@@ -1,10 +1,10 @@
-- if prototype.like_user(current_user)  #createメソッドのあと, dele
+- if prototype.like_user(current_user)  #createメソッドのあと, deleteする前
   = button_to prototype_like_path(prototype, like.id), class: "btn btn-default", id: "like-btn", method: :delete, remote: true do
     = image_tag("icon_heart_red.svg")
     Like
-    %span.num= prototype.likes_count #どこで定義したか忘れた。何このメソッド。
+    %span.num= prototype.likes_count
 - else #deleteメソッドのあと, createする前
   = button_to prototype_likes_path(prototype), class: "btn btn-default", id: "like-btn", remote: true do
     = image_tag("icon_heart.svg")
     Like
-    %span.num= prototype.likes_count #どこで定義したか忘れた。何このメソッド。
+    %span.num= prototype.likes_count
