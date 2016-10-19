@@ -1,0 +1,2 @@
+console.log("create like")
+$("#like-btn").html("<%= j(render partial: 'likes/like', locals: { prototype: @prototype, like: @like }) %>")
