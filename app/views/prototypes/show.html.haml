@@ -40,7 +40,7 @@
   .row.proto-comments
     %h4.col-md-12
       Comments
-      %span.num= @comments.count #この数字をカッコで囲いたいけど...
+      %span.num (#{@comments.count})
     .col-md-8
       #comment-area
         = render partial: 'comments/comment', collection: @comments
