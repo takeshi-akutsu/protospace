@@ -3,8 +3,8 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
 
   def create
-    current_user.comments.create(comment_params)
-    redirect_to prototype_path(params[:prototype_id])
+    comment = current_user.comments.create(comment_params)
+    @comments = comment.prototype.comments
   end
 
   def destroy

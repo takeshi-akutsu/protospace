@@ -42,19 +42,10 @@
       Comments
       %span.num= @comments.count #この数字をカッコで囲いたいけど...
     .col-md-8
-      - @comments.each do |comment|
-        .media
-          .media-left
-            %a{href: "#"}
-              = image_tag(comment.user.avatar, class: "media-object", alt: "64x64", height: "64px", width: "64px", data: {src: "holder.js/64x64"}, data: {holder: {rendered: "true"}})
-          .media-body
-            %h4#top-aligned-media.media-heading
-              = comment.user.nickname
-              %a.anchorjs-link{href: "#top-aligned-media"}
-                %span.anchorjs-icon
-            %p= comment.text
+      #comment-area
+        = render partial: 'comments/comment', collection: @comments
 
-      = form_for(@comment, url: prototype_comments_path(@prototype, @comment), html: { method: :post}, class: "form-inline", role: "form") do |f|
+      = form_for(@comment, url: prototype_comments_path(@prototype, @comment), html: { method: :post}, class: "form-inline", role: "form", remote: true) do |f|
         %h4 Write a comment
         .row
           .form-group.col-md-10
