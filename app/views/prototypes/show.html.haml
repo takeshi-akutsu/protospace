@@ -8,7 +8,7 @@
         .media-body
           %h4#top-aligned-media.custom-media-heading
             = @prototype.title
-            = link_to "編集", edit_prototype_path(@prototype), class: "edit-btn btn-primary" if @prototype.user.id == current_user.id
+            = link_to "編集", edit_prototype_path(@prototype), class: "edit-btn btn-primary" if user_signed_in? && @prototype.user.id == current_user.id
           .proto-user
             = link_to "by #{@prototype.user.nickname}", user_path(@prototype.user)
             %span.degree= @prototype.user.works
