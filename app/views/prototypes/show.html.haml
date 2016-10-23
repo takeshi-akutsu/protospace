@@ -43,7 +43,7 @@
       %span.num (#{@comments.count})
     .col-md-8
       #comment-area
-        = render partial: 'comments/comment', collection: @comments
+        = render @comments
 
       = form_for(@comment, url: prototype_comments_path(@prototype, @comment), html: { method: :post}, class: "form-inline", role: "form", remote: true) do |f|
         %h4 Write a comment

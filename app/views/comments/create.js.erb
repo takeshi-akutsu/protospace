@@ -1,2 +1,2 @@
 $("#comment_text").val(""); // 入力フォームを空欄にする処理
-$("#comment-area").html("<%= j(render partial: 'comments/comment', collection: @comments) %>")
+$("#comment-area").html("<%= j(render @comments) %>")
