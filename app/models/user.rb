@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :prototypes
   has_many :likes
+  has_many :comments
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
