@@ -1,7 +1,7 @@
 .col-sm-4.col-md-3.proto-content
   .thumbnail
     = link_to prototype_path(prototype) do
-      = image_tag prototype.images.main.first.image #mainメソッドでは配列が帰ってくるので、firstメソッドをはさんだ
+      = image_tag prototype.get_first_image
       .caption
         %h3= prototype.title
         .proto-meta

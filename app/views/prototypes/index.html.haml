@@ -6,10 +6,10 @@
   .container
     .row
       %ul.nav.nav-pills.col-lg-11
-        %li#pop-btn.active{role: "presentation"}
+        %li#newest-btn.active{role: "presentation"}
+          = link_to "Newest PROTO", prototypes_path
+        %li#pop-btn{role: "presentation"}
           = link_to "Popular PROTO", popular_index_path, remote: :true
-        %li#newest-btn{role: "presentation"}
-          = link_to "Newest PROTO", newest_index_path, remote: :true
       %button{type: "button", class: "btn btn-default col-lg-1"} View Tags
 
 .container.proto-list
