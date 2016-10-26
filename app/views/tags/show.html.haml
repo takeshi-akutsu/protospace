@@ -1,0 +1,37 @@
+.jumbotron
+  .container.text-center
+    = image_tag("header_logo.png", alt: "PROTO TYPE - SHARE THE PROTOTYPE", height: "73px")
+
+.filter-nav
+  .container
+    .row
+      %ul.nav.nav-pills.col-lg-11
+        %li.active{role: "presentation"}
+          %a{href: "#"} Popular PROTO
+        %li{role: "presentation"}
+          %a{href: "#"} Newest PROTO
+      = button_to "View Tags", tags_path, class: "btn btn-default col-lg-1", method: :get
+
+.container.proto-list
+  .row
+    - @prototypes.each do |prototype|
+      .col-sm-4.col-md-3.proto-content
+        .thumbnail
+          = link_to prototype_path(prototype) do
+            = image_tag prototype.images.main.first.image #mainメソッドでは配列が帰ってくるので、firstメソッドをはさんだ
+            .caption
+              %h3= prototype.title
+              .proto-meta
+                .proto-user
+                  = link_to "by #{prototype.user.nickname}", user_path(prototype.user)
+                .proto-posted
+                  = prototype.created_at.strftime("%b %e")
+              %ul.proto-tag-list.list-inline
+                %li
+                  %a{href: "#", class: "btn btn-default"} iPad
+                %li
+                  %a{href: "#", class: "btn btn-default"} wireframe
+
+.text-center
+  %ul.pagination
+    = paginate @prototypes
