@@ -6,7 +6,14 @@ class Prototype < ActiveRecord::Base
 
   accepts_nested_attributes_for :images, reject_if: proc { |attributes| attributes['image'].blank? }
 
+  scope :order_popular, -> { order("likes_count DESC") }
+  scope :order_newest, -> { order("created_at DESC") }
+
   def like_user(user)
     likes.find_by(user_id: user)
+  end
+
+  def get_first_image
+    self.images.main.first.image
   end
 end
