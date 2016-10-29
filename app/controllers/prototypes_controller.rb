@@ -17,6 +17,7 @@ class PrototypesController < ApplicationController
     @like = prototype.like_user(current_user)
     @comment = Comment.new
     @comments = prototype.comments
+    @tags = prototype.tags
   end
 
   def create
@@ -49,7 +50,7 @@ class PrototypesController < ApplicationController
   end
 
   def prototype_params
-    params.require(:prototype).permit(:title, :catch_copy, :concept, images_attributes: [:id, :image, :status])
+    params.require(:prototype).permit(:title, :catch_copy, :concept, tag_list: [], images_attributes: [:id, :image, :status])
   end
 
   def redirect_to_root

@@ -1,0 +1,7 @@
+.container
+  .row
+    .tags-list
+      %h2 Tags List
+      %ul
+        - @tags.each do |tag|
+          = render partial: 'tags/tag', locals: { tag: tag }
