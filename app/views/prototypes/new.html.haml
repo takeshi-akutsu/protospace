@@ -8,19 +8,22 @@
         .col-md-12
           .cover-image-upload
             = f.fields_for :images do |image_form|
-              = image_form.file_field :image
+              = image_tag "", id: "js-main-preview", class: "hide"
+              = image_form.file_field :image, class: "js-preview"
               = image_form.hidden_field :status, value: :main
         .col-md-12
           %ul.proto-sub-list.list-group
             %li.list-group-item.col-md-4
               .image-upload
                 = f.fields_for :images do |image_form|
-                  = image_form.file_field :image
+                  = image_tag "", id: "js-first-sub-preview", class: "hide"
+                  = image_form.file_field :image, class: "js-preview"
                   = image_form.hidden_field :status, value: :sub
             %li.list-group-item.col-md-4
               .image-upload
                 = f.fields_for :images do |image_form|
-                  = image_form.file_field :image
+                  = image_tag "", id: "js-second-sub-preview", class: "hide"
+                  = image_form.file_field :image, class: "js-preview"
                   = image_form.hidden_field :status, value: :sub
             %li.list-group-item.col-md-4
               .image-upload-plus
