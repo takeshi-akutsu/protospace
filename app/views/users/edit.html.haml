@@ -9,7 +9,7 @@
               = f.text_field :nickname, placeholder: "Username", value: current_user.nickname
             .user-image.col-md-2{style: "background-image: url(#{current_user.avatar});"}
               = button_tag "Change image", class: "btn btn-primary"
-              = f.file_field :avatar
+              = f.file_field :avatar, class: "js-avatar-preview"
           = f.email_field :email, class: "user-email", placeholder: "E-Mail", value: current_user.email
           = f.password_field :password, class: "user-password", placeholder: "Password"
         .col-md-12
