@@ -4,10 +4,8 @@ $(document).on('turbolinks:load',function(){
     var file = this.files[0]
     var reader = new FileReader();
     reader.readAsDataURL(file);
-    console.log(id);
 
     reader.addEventListener("load", function(){
-      console.log(reader.result);
       $("#" + id).attr("src", reader.result);
       $("#" + id).removeClass("hide");
     });
