@@ -27,7 +27,8 @@
                     = image_form.file_field :image, class: "js-prototype-image-preview"
                     = image_form.hidden_field :status, value: :sub
                     = image_tag "", class: "sub_image hide", id: "sub_#{index}_preview"
-            %li.list-group-item.col-md-4.sub_image_form#add_new_form
+            / @prototype.images.sub.countが3だったら、↓のliにhideというクラスを追加したいけど....どこにロジックを書けばいいんだろう
+            %li.list-group-item.col-md-4.sub_image_form#add_new_forms
               .image-upload-plus
                 %span +
       .row.proto-description
