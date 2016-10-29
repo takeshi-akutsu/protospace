@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load',function(){
-  $(".js-preview").on("change", function(){
+  $(".js-prototype-image-preview").on("change", function(){
     var id = $(this).closest("div").find("img").attr("id")
     var file = this.files[0]
     var reader = new FileReader();
