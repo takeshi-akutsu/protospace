@@ -12,17 +12,24 @@
               = image_form.hidden_field :status, value: :main
               = image_tag @prototype.images.main.first.image, id: "main_preview" if @prototype.images.main.first
         .col-md-12
-          - @prototype.images.sub.each_with_index do |image, index|
-            %ul.proto-sub-list.list-group
+          %ul.proto-sub-list.list-group
+            - @prototype.images.sub.each_with_index do |image, index|
               %li.list-group-item.col-md-4.sub_image_form
                 .image-upload
                   = f.fields_for :images, image do |image_form|
                     = image_form.file_field :image, class: "js-prototype-image-preview"
                     = image_form.hidden_field :status, value: :sub
                     = image_tag image.image, class: "sub_image", id: "sub_#{index}_preview", style: "display: inline;"
-              %li.list-group-item.col-md-4.sub_image_form
-                .image-upload-plus
-                  %span +
+            - (@prototype.images.sub.count+1).upto(3) do |index|
+              %li.list-group-item.col-md-4.sub_image_form.hide-form{class: "js-show-sub-#{index}-image-form"}
+                .image-upload
+                  = f.fields_for :images do |image_form|
+                    = image_form.file_field :image, class: "js-prototype-image-preview"
+                    = image_form.hidden_field :status, value: :sub
+                    = image_tag "", class: "sub_image hide", id: "sub_#{index}_preview"
+            %li.list-group-item.col-md-4.sub_image_form#add_new_form
+              .image-upload-plus
+                %span +
       .row.proto-description
         .col-md-12
           = f.text_field :catch_copy, placeholder: "Catch Copy"
