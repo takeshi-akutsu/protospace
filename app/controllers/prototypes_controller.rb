@@ -26,6 +26,7 @@ class PrototypesController < ApplicationController
   end
 
   def edit
+    @prototype.images.build
   end
 
   def update

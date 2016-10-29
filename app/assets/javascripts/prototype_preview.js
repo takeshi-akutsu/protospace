@@ -1,0 +1,13 @@
+$(document).on('turbolinks:load',function(){
+  $(".js-prototype-image-preview").on("change", function(){
+    var id = $(this).closest("div").find("img").attr("id")
+    var file = this.files[0]
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.addEventListener("load", function(){
+      $("#" + id).attr("src", reader.result);
+      $("#" + id).removeClass("hide");
+    });
+  });
+});
