@@ -4,7 +4,7 @@ class PrototypesController < ApplicationController
   before_action :redirect_to_root, only: [:edit]
 
   def index
-    @prototypes = Prototype.includes([:images, :user]).page(params[:page]).per(8)
+    @prototypes = Prototype.includes([:images, :user]).order_newest.page(params[:page]).per(8)
   end
 
   def new
