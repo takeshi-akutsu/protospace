@@ -21,7 +21,6 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    binding.pry
     current_user.prototypes.create(prototype_params)
     redirect_to root_path
   end
@@ -51,7 +50,7 @@ class PrototypesController < ApplicationController
   end
 
   def prototype_params
-    params.require(:prototype).permit(:title, :catch_copy, :concept, :tag_list => [], images_attributes: [:id, :image, :status])
+    params.require(:prototype).permit(:title, :catch_copy, :concept, tag_list: [], images_attributes: [:id, :image, :status])
   end
 
   def redirect_to_root
