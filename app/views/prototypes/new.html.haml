@@ -16,13 +16,13 @@
             %li.list-group-item.col-md-4
               .image-upload
                 = f.fields_for :images do |image_form|
-                  = image_tag "", id: "js-first-sub-preview", class: "hide"
+                  = image_tag "", id: "js-sub-0-preview", class: "hide"
                   = image_form.file_field :image, class: "js-preview"
                   = image_form.hidden_field :status, value: :sub
             %li.list-group-item.col-md-4
               .image-upload
                 = f.fields_for :images do |image_form|
-                  = image_tag "", id: "js-second-sub-preview", class: "hide"
+                  = image_tag "", id: "js-sub-1-preview", class: "hide"
                   = image_form.file_field :image, class: "js-preview"
                   = image_form.hidden_field :status, value: :sub
             %li.list-group-item.col-md-4
